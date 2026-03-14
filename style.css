@@ -1,0 +1,108 @@
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #f5f0e8;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Caveat', cursive;
+    }
+
+    .thought {
+      position: absolute;
+      top: 45%;
+      left: -220px;
+      animation: fly 12s linear infinite;
+      cursor: pointer;
+    }
+
+    .bubble {
+      background: white;
+      border: 2px solid #ddd;
+      border-radius: 40px;
+      padding: 14px 24px;
+      font-size: 22px;
+      color: #333;
+      white-space: nowrap;
+      box-shadow: 2px 4px 16px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .bubble::after {
+      content: '';
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #ddd;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 6px 0 -1px white, 0 6px 0 1px #ddd;
+    }
+
+    .thought:hover .bubble {
+      transform: scale(1.05);
+      box-shadow: 2px 6px 24px rgba(0,0,0,0.14);
+    }
+
+    @keyframes fly {
+      0%   { left: -220px; top: 45%; }
+      25%  { top: 38%; }
+      50%  { top: 45%; }
+      75%  { top: 40%; }
+      100% { left: calc(100vw + 220px); top: 45%; }
+    }
+
+    /* Modal */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .overlay.show { display: flex; }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 40px;
+      width: 340px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .card h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .card .date {
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 16px;
+    }
+
+    .card .desc {
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .close {
+      position: absolute;
+      top: 14px; right: 18px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #bbb;
+      cursor: pointer;
+    }
+    .close:hover { color: #888; }
